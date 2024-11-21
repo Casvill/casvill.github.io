@@ -52,6 +52,7 @@
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 1em;
+            box-sizing: border-box;  /* Asegura que el padding no aumente el tamaño del campo */
         }
 
         input[type="text"]:focus {
@@ -76,6 +77,27 @@
 
         .hidden {
             display: none;
+        }
+
+        /* Estilo para pantallas pequeñas */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;  /* Reduce el tamaño del título en pantallas pequeñas */
+            }
+
+            p {
+                font-size: 1em;  /* Reduce el tamaño del texto en pantallas pequeñas */
+            }
+
+            .form-container {
+                padding: 15px;
+                width: 90%;  /* Aumenta el tamaño relativo del formulario */
+            }
+
+            input[type="text"], button {
+                padding: 12px;
+                font-size: 1.1em;
+            }
         }
     </style>
 </head>
