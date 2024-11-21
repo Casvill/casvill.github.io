@@ -34,8 +34,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;  /* Limita el tamaño máximo del formulario */
-            margin: 0 auto;  /* Centra el formulario horizontalmente */
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         label {
@@ -52,7 +52,6 @@
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 1em;
-            box-sizing: border-box;  /* Asegura que el padding no aumente el tamaño del campo */
         }
 
         input[type="text"]:focus {
@@ -79,30 +78,24 @@
             display: none;
         }
 
-        /* Estilo para pantallas pequeñas */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;  /* Reduce el tamaño del título en pantallas pequeñas */
-            }
+        /* Estilo para la imagen */
+        .image-container {
+            margin-bottom: 20px;
+        }
 
-            p {
-                font-size: 1em;  /* Reduce el tamaño del texto en pantallas pequeñas */
-            }
-
-            .form-container {
-                padding: 15px;
-                width: 90%;  /* Aumenta el tamaño relativo del formulario */
-            }
-
-            input[type="text"], button {
-                padding: 12px;
-                font-size: 1.1em;
-            }
+        .image-container img {
+            max-width: 80%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div>
+        <!-- Contenedor de la imagen -->
+        <div class="image-container">
+            <img src="images/reward.png" alt="Mapa del Tesoro">
+        </div>
+
         <h1>¡¡Tesoro Encontrado!!</h1>
         <p>Por favor, ingresa el nombre de tu equipo para registrar el acceso:</p>
 
