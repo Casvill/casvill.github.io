@@ -50,11 +50,13 @@
 
         input[type="text"] {
             width: 100%;
+            max-width: 100%; /* Asegura que el campo no se estire más allá de su contenedor */
             padding: 10px;
             margin-bottom: 20px;
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 1em;
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
         }
 
         input[type="text"]:focus {
@@ -83,7 +85,7 @@
 
         /* Estilo de la imagen */
         img {
-            max-width: 100%;
+            max-width: 70%;  /* Ajusté el tamaño de la imagen */
             height: auto;
             margin-bottom: 20px;
         }
@@ -91,7 +93,7 @@
 </head>
 <body>
     <div>
-        <!-- Imagen agregada, ajustada para la página móvil y escritorio -->
+        <!-- Imagen ajustada al 70% de su tamaño original -->
         <img src="images/reward.png" alt="Mapa del Tesoro">
 
         <h1>¡¡Tesoro Encontrado!!</h1>
