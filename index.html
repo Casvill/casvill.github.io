@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;  /* Limita el tamaño máximo del formulario */
+            margin: 0 auto;  /* Centra el formulario horizontalmente */
+        }
+
+        label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>¡¡Tesoro Encontrado!!</h1>
+        <p>Por favor, ingresa el nombre de tu equipo para registrar el acceso:</p>
+
+        <div class="form-container">
+            <form id="registroForm" method="GET" action="https://script.google.com/macros/s/AKfycbwmzXsmWkDsrBmlvHGgKBcXruiAGtThSKSGgqWkG0AzYRVFwqYi1tPRCjZZ5mfJ8z-w_A/exec">
+                <label for="nombre">Nombre del Equipo:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+
+                <!-- Campo oculto para el código QR -->
+                <input type="hidden" id="codigo" name="codigo" class="hidden" value="">
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const codigo = params.get('codigo');
+            
+            console.log("Código obtenido de la URL:", codigo);
+
+            if (codigo) {
+                document.getElementById('codigo').value = codigo;
+                console.log("Valor asignado al campo 'codigo':", codigo);
+            }
+        }
+    </script>
+</body>
+</html>
