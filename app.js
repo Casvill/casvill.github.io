@@ -1,4 +1,9 @@
-// Configuración de Firebase (proporcionada por Firebase Console)
+// Importar Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBo6Dnpj7w7eUUTaHPD-xflL4L0g9vG6uk",
   authDomain: "qrwall-93676.firebaseapp.com",
@@ -11,21 +16,31 @@ const firebaseConfig = {
 };
 
 // Inicializar Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-const messagesRef = database.ref("messages");
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// Escuchar eventos de envío de formularios
+// Autenticación anónima
+const auth = getAuth(app);
+signInAnonymously(auth)
+  .then(() => {
+    console.log("Usuario autenticado anónimamente");
+  })
+  .catch((error) => {
+    console.error("Error en la autenticación:", error);
+  });
+
+// Referencia a la base de datos
+const messagesRef = ref(database, "messages");
+
+// Enviar un mensaje
 document.getElementById("messageForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const userMessage = document.getElementById("userMessage").value;
 
-  // Guardar el mensaje en Firebase
-  messagesRef
-    .push({
-      message: userMessage,
-      timestamp: new Date().toISOString(),
-    })
+  push(messagesRef, {
+    message: userMessage,
+    timestamp: new Date().toISOString(),
+  })
     .then(() => {
       console.log("Mensaje enviado:", userMessage);
       alert("Mensaje enviado.");
@@ -37,7 +52,7 @@ document.getElementById("messageForm").addEventListener("submit", (e) => {
 });
 
 // Mostrar mensajes en tiempo real
-messagesRef.on("value", (snapshot) => {
+onValue(messagesRef, (snapshot) => {
   const messagesList = document.getElementById("messagesList");
   messagesList.innerHTML = "<h3>Mensajes de otros usuarios:</h3>";
 
