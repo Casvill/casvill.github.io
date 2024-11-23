@@ -1,9 +1,7 @@
-// Importar Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
-// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBo6Dnpj7w7eUUTaHPD-xflL4L0g9vG6uk",
   authDomain: "qrwall-93676.firebaseapp.com",
@@ -15,11 +13,9 @@ const firebaseConfig = {
   measurementId: "G-Z7VWNZFMWZ",
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Autenticación anónima
 const auth = getAuth(app);
 signInAnonymously(auth)
   .then(() => {
@@ -29,10 +25,8 @@ signInAnonymously(auth)
     console.error("Error en la autenticación:", error);
   });
 
-// Referencia a la base de datos
 const messagesRef = ref(database, "messages");
 
-// Enviar un mensaje
 document.getElementById("messageForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const userMessage = document.getElementById("userMessage").value;
@@ -51,7 +45,6 @@ document.getElementById("messageForm").addEventListener("submit", (e) => {
     });
 });
 
-// Mostrar mensajes en tiempo real
 onValue(messagesRef, (snapshot) => {
   const messagesList = document.getElementById("messagesList");
   messagesList.innerHTML = "<h3>Mensajes de otros usuarios:</h3>";

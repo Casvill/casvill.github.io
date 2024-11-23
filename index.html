@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR Wall</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Firebase (No Modules) -->
+
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  <!-- Archivo JS -->
-  <script type="module" src="app.js" defer></script>
 
+  <script type="module" src="app.js" defer></script>
 </head>
 <body>
+  <!-- Texto "By Casvill" en la parte superior izquierda -->
+  <div class="brand">By Casvill</div>
+
   <header>
     <h1>QR Wall</h1>
     <p>Escribe un mensaje y compártelo con los demás.</p>
   </header>
 
   <main>
-    <!-- Formulario para enviar mensajes -->
     <form id="messageForm">
       <input type="text" id="userMessage" placeholder="Escribe tu mensaje aquí" required>
       <button type="submit">Enviar mensaje</button>
     </form>
 
-    <!-- Lista de mensajes -->
     <div id="messagesList">
-      <h3>Mensajes de otros usuarios:</h3>
+      <h3>Wall:</h3>
     </div>
   </main>
 </body>
