@@ -37,8 +37,7 @@ document.getElementById("messageForm").addEventListener("submit", (e) => {
   })
     .then(() => {
       console.log("Mensaje enviado:", userMessage);
-      alert("Mensaje enviado.");
-      document.getElementById("userMessage").value = ""; // Limpiar campo
+      document.getElementById("userMessage").value = ""; 
     })
     .catch((error) => {
       console.error("Error al enviar el mensaje:", error);
@@ -47,7 +46,7 @@ document.getElementById("messageForm").addEventListener("submit", (e) => {
 
 onValue(messagesRef, (snapshot) => {
   const messagesList = document.getElementById("messagesList");
-  messagesList.innerHTML = "<h3>Mensajes de otros usuarios:</h3>";
+  messagesList.innerHTML = "<h3>Wall:</h3>";
 
   const messages = snapshot.val();
   if (messages) {

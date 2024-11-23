@@ -45,7 +45,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-/* Estilo para el texto 'By Casvill' */
+
 .brand {
   position: absolute;
   top: 10px;
@@ -53,11 +53,11 @@ body {
   font-size: 16px;
   color: #333;
   font-weight: bold;
-  z-index: 10; /* Asegura que el texto esté por encima de otros elementos */
+  z-index: 10; 
 }
 
 @media (max-width: 768px) {
   .brand {
-    font-size: 14px; /* Ajusta el tamaño en dispositivos más pequeños */
+    font-size: 14px; 
   }
 }
