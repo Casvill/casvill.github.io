@@ -1,145 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center; /* Centra todo horizontalmente */
-            align-items: center; /* Centra todo verticalmente */
-            height: 100vh; /* Ocupa toda la altura de la pantalla */
-            overflow: hidden; /* Elimina desplazamiento innecesario */
-            text-align: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px; /* Limita el ancho del contenido */
-            padding: 20px; /* Espacio interno */
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        img {
-            max-width: 80%; /* Tamaño adaptado a la pantalla */
-            height: auto;
-            margin-bottom: 15px; /* Separación de la imagen */
-        }
-
-        h1 {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 15px; /* Separación del texto */
-        }
-
-        p {
-            font-size: 1em;
-            color: #555;
-            margin-bottom: 20px; /* Separación del formulario */
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 1em;
-        }
-
-        input[type="text"]:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: #fff;
-            font-size: 1.2em;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em; /* Reducir tamaño del título en móviles */
-            }
-
-            p {
-                font-size: 0.9em; /* Reducir tamaño del texto */
-            }
-
-            button {
-                font-size: 1em; /* Ajustar tamaño del botón */
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Wall</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
+  <script defer src="app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Imagen -->
-        <img src="images/reward.png" alt="Mapa del Tesoro">
-        
-        <!-- Título -->
-        <h1>¡¡Tesoro Encontrado!!</h1>
-        
-        <!-- Texto descriptivo -->
-        <p>Por favor, ingresa el nombre de tu equipo para registrar el acceso:</p>
-        
-        <!-- Formulario -->
-        <form id="registroForm" method="GET" action="https://script.google.com/macros/s/AKfycbyRfUmcdUbVl6bIRPqHRjJ8cjWZ1Bt2fmQeEV6CNfCmXvT5fQFnnm3jQHwtBeIzsfq1/exec">
-            <label for="nombre">Nombre del Equipo:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            
-            <!-- Campo oculto para el código QR -->
-            <input type="hidden" id="codigo" name="codigo" class="hidden" value="">
-            
-            <!-- Botón -->
-            <button type="submit">Enviar</button>
-        </form>
+  <header>
+    <h1>QR Wall</h1>
+    <p>Escribe un mensaje y compártelo con los demás.</p>
+  </header>
+
+  <main>
+    <!-- Formulario para enviar mensajes -->
+    <form id="messageForm">
+      <input type="text" id="userMessage" placeholder="Escribe tu mensaje aquí" required>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+
+    <!-- Lista de mensajes -->
+    <div id="messagesList">
+      <h3>Mensajes de otros usuarios:</h3>
     </div>
-
-    <script>
-        window.onload = function() {
-            const params = new URLSearchParams(window.location.search);
-            const codigo = params.get('codigo');
-            
-            console.log("Código obtenido de la URL:", codigo);
-
-            if (codigo) {
-                document.getElementById('codigo').value = codigo;
-                console.log("Valor asignado al campo 'codigo':", codigo);
-            }
-        }
-    </script>
+  </main>
 </body>
 </html>
